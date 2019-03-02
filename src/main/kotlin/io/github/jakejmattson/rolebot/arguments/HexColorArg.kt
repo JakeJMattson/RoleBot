@@ -11,18 +11,12 @@ open class HexColorArg(override val name : String = "Hex Colour") : ArgumentType
     override val examples = arrayListOf("#000000", "FFFF00", "#3498db", "db3434")
     override val consumptionType = ConsumptionType.Single
     override fun convert(arg: String, args: List<String>, event: CommandEvent): ArgumentResult {
-        if (arg.length != 7 && arg.length != 6) return ArgumentResult.Error("Invalid colour argument.")
+        val error = ArgumentResult.Error("Invalid colour argument.")
 
-        val hex = if (arg.length == 7) arg.substring(1) else arg
+        if (arg.length !in 6..7) return error
 
-        return try {
-            val int = hex.toInt(16)
-            when {
-                int >= 0 -> ArgumentResult.Single(int)
-                else -> ArgumentResult.Error("Hex colors must be positive")
-            }
-        } catch (e: NumberFormatException) {
-            ArgumentResult.Error("Invalid colour argument.")
-        }
+        val int = try { arg.takeLast(6).toInt(16) } catch (e: NumberFormatException) { return error }
+
+        return if (int >= 0) ArgumentResult.Single(int) else error
     }
 }
