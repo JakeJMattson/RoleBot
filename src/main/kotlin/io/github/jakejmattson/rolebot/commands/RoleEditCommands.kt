@@ -1,16 +1,13 @@
 package io.github.jakejmattson.rolebot.commands
 
 import io.github.jakejmattson.rolebot.arguments.BooleanArg
-import io.github.jakejmattson.rolebot.arguments.EmoteArg
 import io.github.jakejmattson.rolebot.arguments.HexColorArg
 import io.github.jakejmattson.rolebot.extensions.toHexString
-import io.github.jakejmattson.rolebot.services.GenericConvoService
 import me.aberrantfox.kjdautils.api.dsl.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
 import me.aberrantfox.kjdautils.internal.command.arguments.RoleArg
 import me.aberrantfox.kjdautils.internal.command.arguments.WordArg
-import net.dv8tion.jda.core.entities.Emote
 import net.dv8tion.jda.core.entities.Role
 import java.awt.Color
 
@@ -24,6 +21,8 @@ fun roleEditCommands() = commands {
             val role = it.args.component1() as Role
             val newName = it.args.component2() as String
             val oldName = role.name
+
+            if (oldName == newName) return@execute it.respond("Value already $newName.")
 
             role.manager.setName(newName).queue()
 
@@ -41,8 +40,12 @@ fun roleEditCommands() = commands {
         execute {
             val role = it.args.component1() as Role
             val newColor = Color(it.args.component2() as Int)
-            val oldColor = role.color
-            val changeString = "from ${oldColor.toHexString()} to ${newColor.toHexString()}"
+            val newColorString = newColor.toHexString()
+            val oldColor = role.color.toHexString()
+
+            if (oldColor == newColorString) return@execute it.respond("Value already $newColorString.")
+
+            val changeString = "from $oldColor to $newColorString"
 
             role.manager.setColor(newColor).queue()
 
@@ -61,6 +64,8 @@ fun roleEditCommands() = commands {
             val role = it.args.component1() as Role
             val mentionable = it.args.component2() as Boolean
             val changeString = "${if (mentionable) "" else "not"} mentionable"
+
+            if (mentionable == role.isMentionable) return@execute it.respond("Value already $mentionable.")
 
             role.manager.setMentionable(mentionable).queue()
 
