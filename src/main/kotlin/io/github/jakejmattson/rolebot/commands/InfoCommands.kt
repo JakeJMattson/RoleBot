@@ -24,4 +24,16 @@ fun infoCommands() = commands {
             })
         }
     }
+
+    command("ViewRoles") {
+        requiresGuild = true
+        description = "View all server roles."
+        execute {
+            val guild = it.guild!!
+
+            val roleString = guild.roles.joinToString("\n") { it.name }
+
+            it.respond("**Server Roles**\n$roleString")
+        }
+    }
 }
