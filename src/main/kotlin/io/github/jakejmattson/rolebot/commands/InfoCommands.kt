@@ -4,8 +4,11 @@ import io.github.jakejmattson.rolebot.extensions.toHexString
 import me.aberrantfox.kjdautils.api.dsl.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
+import me.aberrantfox.kjdautils.extensions.jda.toMember
 import me.aberrantfox.kjdautils.internal.command.arguments.RoleArg
+import me.aberrantfox.kjdautils.internal.command.arguments.UserArg
 import net.dv8tion.jda.core.entities.Role
+import net.dv8tion.jda.core.entities.User
 
 @CommandSet("Info")
 fun infoCommands() = commands {
@@ -25,14 +28,24 @@ fun infoCommands() = commands {
         }
     }
 
-    command("ViewRoles") {
+    command("ViewMemberRoles") {
+        requiresGuild = true
+        description = "View all the roles of a member."
+        expect(UserArg)
+        execute {
+            val user = it.args.component1() as User
+            val roles = user.toMember(it.guild!!).roles
+            val roleString = roles.joinToString("\n") { it.name }.takeIf { it.isNotEmpty() } ?: "<No roles>"
+
+            it.respond("**Member Roles**\n$roleString")
+        }
+    }
+
+    command("ViewGuildRoles") {
         requiresGuild = true
         description = "View all server roles."
         execute {
-            val guild = it.guild!!
-
-            val roleString = guild.roles.joinToString("\n") { it.name }
-
+            val roleString = it.guild!!.roles.joinToString("\n") { it.name }
             it.respond("**Server Roles**\n$roleString")
         }
     }
