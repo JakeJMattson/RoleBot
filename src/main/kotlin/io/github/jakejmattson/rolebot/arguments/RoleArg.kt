@@ -1,0 +1,40 @@
+package io.github.jakejmattson.rolebot.arguments
+
+import me.aberrantfox.kjdautils.api.dsl.CommandEvent
+import me.aberrantfox.kjdautils.internal.command.ArgumentResult
+import me.aberrantfox.kjdautils.internal.command.ArgumentType
+import me.aberrantfox.kjdautils.internal.command.ConsumptionType
+import java.lang.StringBuilder
+
+open class RoleArg(override val name : String = "Role", private val guildId: String = "") : ArgumentType {
+    companion object : RoleArg()
+
+    override val examples = arrayListOf("Moderator", "Level 1", "406612842968776706")
+    override val consumptionType = ConsumptionType.Multiple
+    override fun convert(arg: String, args: List<String>, event: CommandEvent): ArgumentResult {
+
+        val guild = if (guildId.isNotEmpty()) event.jda.getGuildById(guildId) else event.guild
+        guild ?: return ArgumentResult.Error("Failed to resolve guild! Pass guild id to RoleArg if using in private messages.")
+
+        var roles = guild.roles
+        val roleBuilder = StringBuilder()
+        fun String.startsWithIgnoreCase(string: String) = this.toLowerCase().startsWith(string.toLowerCase())
+
+        args.takeWhile {
+            val padding = if (roleBuilder.isNotEmpty()) " " else ""
+            roleBuilder.append("$padding$it")
+            roles = roles.filter { it.name.startsWithIgnoreCase(roleBuilder.toString()) }
+
+            roles.size > 1
+        }
+
+        val error = ArgumentResult.Error("Couldn't retrieve role :: $roleBuilder")
+        val resolvedRole = roles.firstOrNull() ?: return error
+        val resolvedName = resolvedRole.name
+        val lengthOfRole = resolvedName.split(" ").size
+        val argList = args.take(lengthOfRole)
+        val isValid = resolvedName.toLowerCase() == argList.joinToString(" ").toLowerCase()
+
+        return if (isValid) ArgumentResult.Multiple(resolvedRole, argList) else error
+    }
+}
