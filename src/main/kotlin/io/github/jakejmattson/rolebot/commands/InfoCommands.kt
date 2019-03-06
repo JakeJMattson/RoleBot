@@ -5,8 +5,8 @@ import me.aberrantfox.kjdautils.api.dsl.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
 import me.aberrantfox.kjdautils.extensions.jda.toMember
-import me.aberrantfox.kjdautils.internal.command.arguments.RoleArg
 import me.aberrantfox.kjdautils.internal.command.arguments.UserArg
+import io.github.jakejmattson.rolebot.arguments.RoleArg
 import net.dv8tion.jda.core.entities.Role
 import net.dv8tion.jda.core.entities.User
 

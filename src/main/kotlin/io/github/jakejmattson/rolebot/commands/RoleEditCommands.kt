@@ -6,8 +6,8 @@ import io.github.jakejmattson.rolebot.extensions.toHexString
 import me.aberrantfox.kjdautils.api.dsl.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
-import me.aberrantfox.kjdautils.internal.command.arguments.RoleArg
 import me.aberrantfox.kjdautils.internal.command.arguments.WordArg
+import io.github.jakejmattson.rolebot.arguments.RoleArg
 import net.dv8tion.jda.core.entities.Role
 import java.awt.Color
 
