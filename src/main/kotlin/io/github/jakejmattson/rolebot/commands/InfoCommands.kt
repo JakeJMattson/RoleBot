@@ -7,6 +7,7 @@ import me.aberrantfox.kjdautils.api.dsl.embed
 import me.aberrantfox.kjdautils.extensions.jda.toMember
 import me.aberrantfox.kjdautils.internal.command.arguments.UserArg
 import io.github.jakejmattson.rolebot.arguments.RoleArg
+import me.aberrantfox.kjdautils.extensions.jda.fullName
 import net.dv8tion.jda.core.entities.Role
 import net.dv8tion.jda.core.entities.User
 
@@ -25,6 +26,18 @@ fun infoCommands() = commands {
                 addField("Color", role.color.toHexString(), false)
                 addField("Mentionable", if (role.isMentionable) "Yes" else "No", false)
             })
+        }
+    }
+
+    command("GetMembersWithRole") {
+        requiresGuild = true
+        description = "View all the members with this role."
+        expect(RoleArg)
+        execute {
+            val role = it.args.component1() as Role
+            val members = it.guild!!.members.filter { it.roles.contains(role) }.joinToString("\n") { it.fullName() }
+
+            it.respond("**Members With Role**\n$members")
         }
     }
 

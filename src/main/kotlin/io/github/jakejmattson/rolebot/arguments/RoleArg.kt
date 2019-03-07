@@ -14,12 +14,13 @@ open class RoleArg(override val name : String = "Role", private val guildId: Str
     override fun convert(arg: String, args: List<String>, event: CommandEvent): ArgumentResult {
 
         val guild = if (guildId.isNotEmpty()) event.jda.getGuildById(guildId) else event.guild
-        guild ?: return ArgumentResult.Error("Failed to resolve guild! Pass guild id to RoleArg if using in private messages.")
+        guild ?: return ArgumentResult.Error("Failed to resolve guild! Pass a valid guild id to RoleArg.")
 
         var roles = guild.roles
         val roleBuilder = StringBuilder()
         fun String.startsWithIgnoreCase(string: String) = this.toLowerCase().startsWith(string.toLowerCase())
 
+        //Consume arguments until only one role matches the filter
         args.takeWhile {
             val padding = if (roleBuilder.isNotEmpty()) " " else ""
             roleBuilder.append("$padding$it")
@@ -29,9 +30,15 @@ open class RoleArg(override val name : String = "Role", private val guildId: Str
         }
 
         val error = ArgumentResult.Error("Couldn't retrieve role :: $roleBuilder")
+
+        //Get the single role that survived filtering
         val resolvedRole = roles.firstOrNull() ?: return error
         val resolvedName = resolvedRole.name
+
+        //Determine how many args this role would consume
         val lengthOfRole = resolvedName.split(" ").size
+
+        //Check if the role that survived filtering matches the args given
         val argList = args.take(lengthOfRole)
         val isValid = resolvedName.toLowerCase() == argList.joinToString(" ").toLowerCase()
 
