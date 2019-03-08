@@ -4,9 +4,8 @@ import me.aberrantfox.kjdautils.api.dsl.CommandEvent
 import me.aberrantfox.kjdautils.internal.command.ArgumentResult
 import me.aberrantfox.kjdautils.internal.command.ArgumentType
 import me.aberrantfox.kjdautils.internal.command.ConsumptionType
-import java.lang.StringBuilder
 
-open class RoleArg(override val name : String = "Role", private val guildId: String = "") : ArgumentType {
+open class RoleArg(override val name: String = "Role", private val guildId: String = "") : ArgumentType {
     companion object : RoleArg()
 
     override val examples = arrayListOf("Moderator", "Level 1", "406612842968776706")

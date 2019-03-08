@@ -5,7 +5,7 @@ import me.aberrantfox.kjdautils.internal.command.ArgumentResult
 import me.aberrantfox.kjdautils.internal.command.ArgumentType
 import me.aberrantfox.kjdautils.internal.command.ConsumptionType
 
-open class BooleanArg(override val name : String = "Boolean") : ArgumentType {
+open class BooleanArg(override val name: String = "Boolean") : ArgumentType {
     companion object : BooleanArg()
 
     override val examples = arrayListOf("True", "true", "T")
@@ -18,4 +18,4 @@ open class BooleanArg(override val name : String = "Boolean") : ArgumentType {
             "f" -> ArgumentResult.Single(false)
             else -> ArgumentResult.Error("Invalid boolean argument.")
         }
-    }
+}
