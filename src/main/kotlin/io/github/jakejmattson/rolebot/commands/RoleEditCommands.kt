@@ -7,12 +7,28 @@ import io.github.jakejmattson.rolebot.extensions.toHexString
 import me.aberrantfox.kjdautils.api.dsl.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
+import me.aberrantfox.kjdautils.internal.command.arguments.SentenceArg
 import me.aberrantfox.kjdautils.internal.command.arguments.WordArg
 import net.dv8tion.jda.core.entities.Role
+import net.dv8tion.jda.core.managers.GuildController
 import java.awt.Color
 
 @CommandSet("RoleEdit")
 fun roleEditCommands() = commands {
+    command("CreateRole") {
+        requiresGuild = true
+        description = "Create a role with the given name"
+        expect(SentenceArg)
+        execute {
+            val name = it.args.component1() as String
+            GuildController(it.guild).createRole().queue {
+                it.manager.setName(name).queue()
+            }
+
+            it.respond("**Role Created**")
+        }
+    }
+
     command("SetName") {
         requiresGuild = true
         description = "Set the name of the given role."
