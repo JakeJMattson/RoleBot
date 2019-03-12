@@ -75,4 +75,15 @@ fun roleEditCommands() = commands {
             })
         }
     }
+
+    command("DeleteRole") {
+        requiresGuild = true
+        description = "Delete the given role."
+        expect(RoleArg)
+        execute {
+            val role = it.args.component1() as Role
+            role.delete().queue()
+            it.respond("**Role Deleted**")
+        }
+    }
 }
