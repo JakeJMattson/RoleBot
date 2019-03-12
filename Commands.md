@@ -4,6 +4,7 @@
 
 | Command        | Arguments       | Effect                                             |
 | ------         | ------          | ------                                             |
+| CreateRole     | Role Name       | Create a role with the given name.                 |
 | SetName        | Role, Word      | Set the name of the given role.                    |
 | SetColor       | Role, Hex Color | Set the color of the given role.                   |
 | SetMentionable | Role, Boolean   | Set whether or not the given role can be mentioned.|

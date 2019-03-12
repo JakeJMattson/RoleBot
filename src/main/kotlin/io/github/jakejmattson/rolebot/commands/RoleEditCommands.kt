@@ -17,7 +17,7 @@ import java.awt.Color
 fun roleEditCommands() = commands {
     command("CreateRole") {
         requiresGuild = true
-        description = "Create a role with the given name"
+        description = "Create a role with the given name."
         expect(SentenceArg)
         execute {
             val name = it.args.component1() as String
