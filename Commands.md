@@ -18,3 +18,9 @@
 | GetMembersWithRole | Role      | View all the members with this role. |
 | ViewMemberRoles    | User      | View all the roles of a member.      |
 | ViewGuildRoles     | (none)    | View all server roles.               |
+
+## Utility
+
+| Command  | Arguments | Effect                               |
+| ------   | ------    | ------                               |
+| Ping     | (none)    | Display the network ping of the bot. |
