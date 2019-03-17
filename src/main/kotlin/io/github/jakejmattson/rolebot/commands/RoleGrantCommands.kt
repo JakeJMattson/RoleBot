@@ -82,4 +82,12 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
             it.respond("`${role.name}` can no longer be granted.")
         }
     }
+
+    command("ListGrantableRoles") {
+        requiresGuild = true
+        description = "List all roles that can be granted."
+        execute {
+            it.respond("**GrantableRoles**\n${roleGrantingService.listRoles()}")
+        }
+    }
 }
