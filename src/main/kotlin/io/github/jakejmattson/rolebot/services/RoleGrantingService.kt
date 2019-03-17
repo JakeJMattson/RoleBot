@@ -7,8 +7,8 @@ private val grantableRoles = ArrayList<Role>()
 fun Role.isGrantable() = grantableRoles.contains(this)
 
 @Service
-class RoleGrantingService() {
+class RoleGrantingService {
     fun addRole(role: Role) = grantableRoles.add(role)
     fun removeRole(role: Role) = grantableRoles.remove(role)
-    fun listRoles() = grantableRoles.joinToString("\n")
+    fun listRoles() = grantableRoles.joinToString("\n") { it.name }
 }
