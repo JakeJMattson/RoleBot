@@ -16,5 +16,8 @@ RoleBot is a simple bot interface to the discord role system.
 It allows you to view and modify roles via commands instead of the traditional Discord interface.
 </p>
 
+## Setup
+See [setup.md](setup.md) for a setup guide.
+
 ## Commands
 See [Commands.md](Commands.md) for a list of commands.
