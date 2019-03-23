@@ -31,6 +31,7 @@
 
 ## Utility
 
-| Command  | Arguments | Effect                               |
-| ------   | ------    | ------                               |
-| Ping     | (none)    | Display the network ping of the bot. |
+| Command  | Arguments | Effect                                      |
+| ------   | ------    | ------                                      |
+| Ping     | (none)    | Display the network ping of the bot.        |
+| Uptime   | (none)    | Displays how long the bot has been running. |
