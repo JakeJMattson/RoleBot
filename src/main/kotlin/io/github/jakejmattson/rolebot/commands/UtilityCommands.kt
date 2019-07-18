@@ -1,5 +1,6 @@
 package io.github.jakejmattson.rolebot.commands
 
+import io.github.jakejmattson.rolebot.extensions.toMinimalTimeString
 import me.aberrantfox.kjdautils.api.dsl.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
@@ -21,11 +22,7 @@ fun utilityCommands() = commands {
         requiresGuild = true
         description = "Displays how long the bot has been running."
         execute {
-            val milliseconds = Date().time - startTime.time
-            val seconds = (milliseconds / 1000) % 60
-            val minutes = (milliseconds / (1000 * 60)) % 60
-            val hours = (milliseconds / (1000 * 60 * 60)) % 24
-            val days = (milliseconds / (1000 * 60 * 60 * 24))
+            val seconds = (Date().time - startTime.time) / 1000
 
             it.respond(embed {
                 setColor(Color.WHITE)
@@ -34,7 +31,7 @@ fun utilityCommands() = commands {
 
                 field {
                     name = "That's been"
-                    value = "$days day(s), $hours hour(s), $minutes minute(s) and $seconds second(s)"
+                    value = seconds.toMinimalTimeString()
                 }
             })
         }
