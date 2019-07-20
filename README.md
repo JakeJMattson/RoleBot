@@ -20,4 +20,4 @@ It allows you to view and modify roles via commands instead of the traditional D
 See [setup.md](setup.md) for a setup guide.
 
 ## Commands
-See [commands.md](commands.md) for a list of commands.
+See [Commands.md](Commands.md) for a list of commands.
