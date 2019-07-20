@@ -9,6 +9,8 @@ fun main(args: Array<String>) {
         configure {
             prefix = "*"
             globalPath = "io.github.jakejmattson.rolebot"
+
+            registerInjectionObject(this@startBot.container)
         }
     }
 }

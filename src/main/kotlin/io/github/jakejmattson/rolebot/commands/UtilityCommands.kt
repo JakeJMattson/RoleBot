@@ -9,7 +9,7 @@ import java.util.*
 
 private val startTime = Date()
 
-@CommandSet("utility")
+@CommandSet("Utility")
 fun utilityCommands() = commands {
     command("Ping") {
         description = "Display network status."
