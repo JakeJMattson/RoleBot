@@ -8,6 +8,9 @@
   <a href="https://discordapp.com/users/254786431656919051/">
     <img src="https://img.shields.io/badge/Discord-JakeyWakey%231569-lightgrey.svg" alt="Discord JakeyWakey#1569">
   </a>
+  <a href="LICENSE.md">
+    <img src="https://img.shields.io/github/license/JakeJMattson/RoleBot.svg" alt="License">
+  </a>
 </p>
 
 # RoleBot
@@ -21,3 +24,6 @@ See [setup.md](setup.md) for a setup guide.
 
 ## Commands
 See [Commands.md](Commands.md) for a list of commands.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
