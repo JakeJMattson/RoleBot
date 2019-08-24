@@ -3,7 +3,7 @@
     <img src="https://img.shields.io/badge/Kotlin-1.3.41-blue.svg" alt="Kotlin 1.3.41">
   </a>
   <a href="https://gitlab.com/Aberrantfox/KUtils">
-    <img src="https://img.shields.io/badge/KUtils-0.9.17-blue.svg" alt="KUtils 0.9.17">
+    <img src="https://img.shields.io/badge/KUtils-0.10.0-blue.svg" alt="KUtils 0.10.0">
   </a>
   <a href="LICENSE.md">
     <img src="https://img.shields.io/github/license/JakeJMattson/RoleBot.svg" alt="License">

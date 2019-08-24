@@ -8,9 +8,9 @@ import me.aberrantfox.kjdautils.api.dsl.commands
 import me.aberrantfox.kjdautils.extensions.jda.fullName
 import me.aberrantfox.kjdautils.extensions.jda.toMember
 import me.aberrantfox.kjdautils.internal.command.arguments.UserArg
-import net.dv8tion.jda.core.entities.Role
-import net.dv8tion.jda.core.entities.User
-import net.dv8tion.jda.core.managers.GuildController
+import net.dv8tion.jda.api.entities.Role
+import net.dv8tion.jda.api.entities.User
+
 
 @CommandSet("RoleGrant")
 fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
@@ -27,7 +27,8 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
                 return@execute it.respond("Role cannot be granted.")
 
             val guild = it.guild!!
-            GuildController(guild).addSingleRoleToMember(user.toMember(guild), role).queue()
+            val member = user.toMember(guild)!!
+            guild.addRoleToMember(member, role).queue()
 
             it.respond("`${role.name}` granted to `${user.fullName()}`.")
         }
@@ -45,7 +46,8 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
                 return@execute it.respond("Role cannot be granted (and therefore not revoked).")
 
             val guild = it.guild!!
-            GuildController(guild).removeSingleRoleFromMember(user.toMember(guild), role).queue()
+            val member = user.toMember(guild)!!
+            guild.removeRoleFromMember(member, role).queue()
 
             it.respond("`${role.name}` revoked from `${user.fullName()}`.")
         }

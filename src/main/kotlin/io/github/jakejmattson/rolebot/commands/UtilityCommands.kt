@@ -14,7 +14,7 @@ fun utilityCommands() = commands {
     command("Ping") {
         description = "Display network status."
         execute {
-            it.respond("**Pinged in**: ${it.jda.ping}ms")
+            it.respond("**Pinged in**: ${it.discord.jda.gatewayPing}ms")
         }
     }
 

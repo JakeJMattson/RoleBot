@@ -9,8 +9,7 @@ import me.aberrantfox.kjdautils.api.dsl.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
 import me.aberrantfox.kjdautils.internal.command.arguments.SentenceArg
 import me.aberrantfox.kjdautils.internal.command.arguments.WordArg
-import net.dv8tion.jda.core.entities.Role
-import net.dv8tion.jda.core.managers.GuildController
+import net.dv8tion.jda.api.entities.Role
 import java.awt.Color
 
 @CommandSet("RoleEdit")
@@ -21,7 +20,8 @@ fun roleEditCommands() = commands {
         expect(SentenceArg)
         execute {
             val name = it.args.component1() as String
-            GuildController(it.guild).createRole().queue {
+
+            it.guild!!.createRole().queue {
                 it.manager.setName(name).queue()
             }
 
@@ -57,7 +57,7 @@ fun roleEditCommands() = commands {
             val role = it.args.component1() as Role
             val newColor = Color(it.args.component2() as Int)
             val newColorString = newColor.toHexString()
-            val oldColor = role.color.toHexString()
+            val oldColor = role.color?.toHexString()
 
             if (oldColor == newColorString) return@execute it.respond("Value already $newColorString.")
 
