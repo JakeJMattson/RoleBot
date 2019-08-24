@@ -1,14 +1,10 @@
 package io.github.jakejmattson.rolebot.commands
 
-import io.github.jakejmattson.rolebot.arguments.BooleanArg
-import io.github.jakejmattson.rolebot.arguments.HexColorArg
-import io.github.jakejmattson.rolebot.arguments.RoleArg
 import io.github.jakejmattson.rolebot.extensions.toHexString
 import me.aberrantfox.kjdautils.api.dsl.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
-import me.aberrantfox.kjdautils.internal.command.arguments.SentenceArg
-import me.aberrantfox.kjdautils.internal.command.arguments.WordArg
+import me.aberrantfox.kjdautils.internal.arguments.*
 import net.dv8tion.jda.api.entities.Role
 import java.awt.Color
 
@@ -43,7 +39,7 @@ fun roleEditCommands() = commands {
             role.manager.setName(newName).queue()
 
             it.respond(embed {
-                setColor(role.color)
+                color = role.color
                 addField("Role Name Updated", "Role name changed from $oldName to $newName.", false)
             })
         }
@@ -66,7 +62,7 @@ fun roleEditCommands() = commands {
             role.manager.setColor(newColor).queue()
 
             it.respond(embed {
-                setColor(role.color)
+                color = role.color
                 addField("Role Color Updated", "Role color changed $changeString.", false)
             })
         }
@@ -86,7 +82,7 @@ fun roleEditCommands() = commands {
             role.manager.setMentionable(mentionable).queue()
 
             it.respond(embed {
-                setColor(role.color)
+                color = role.color
                 addField("Role Mentionability Updated", "Role is now $changeString.", false)
             })
         }

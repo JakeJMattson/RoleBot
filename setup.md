@@ -37,4 +37,4 @@ Once you have your prerequistes installed, Maven will be used to handle all of t
 If you downloaded IntelliJ, building with Maven is supported out of the box. Please read the [Maven import guide](https://www.jetbrains.com/help/idea/2018.3/maven-support.html#maven_import_project_start) if you're unfamiliar with this process.
 
 ## Running
-If all went well, your bot instance should now be running! You can now run any of the [available commands](Commands.md).
+If all went well, your bot instance should now be running! You can now run any of the [available commands](commands.md).

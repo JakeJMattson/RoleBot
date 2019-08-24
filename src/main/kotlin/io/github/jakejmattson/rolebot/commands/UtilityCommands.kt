@@ -25,9 +25,9 @@ fun utilityCommands() = commands {
             val seconds = (Date().time - startTime.time) / 1000
 
             it.respond(embed {
-                setColor(Color.WHITE)
-                setTitle("I have been running since")
-                setDescription(startTime.toString())
+                color = Color.WHITE
+                title = "I have been running since"
+                description = startTime.toString()
 
                 field {
                     name = "That's been"

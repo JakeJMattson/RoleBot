@@ -1,9 +1,9 @@
 <p align="center">
   <a href="https://kotlinlang.org/">
-    <img src="https://img.shields.io/badge/Kotlin-1.3.41-blue.svg" alt="Kotlin 1.3.41">
+    <img src="https://img.shields.io/badge/Kotlin-1.3.50-blue.svg" alt="Kotlin 1.3.50">
   </a>
   <a href="https://gitlab.com/Aberrantfox/KUtils">
-    <img src="https://img.shields.io/badge/KUtils-0.10.0-blue.svg" alt="KUtils 0.10.0">
+    <img src="https://img.shields.io/badge/KUtils-0.10.1-blue.svg" alt="KUtils 0.10.1">
   </a>
   <a href="LICENSE.md">
     <img src="https://img.shields.io/github/license/JakeJMattson/RoleBot.svg" alt="License">
@@ -29,7 +29,7 @@ It allows you to view and modify roles via commands instead of the traditional D
 See [setup.md](setup.md) for a setup guide.
 
 ## Commands
-See [Commands.md](Commands.md) for a list of commands.
+See [commands.md](commands.md) for a list of commands.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
