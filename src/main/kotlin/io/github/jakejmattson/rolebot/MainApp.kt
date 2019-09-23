@@ -10,10 +10,6 @@ fun main(args: Array<String>) {
         configure {
             prefix = "*"
             globalPath = "io.github.jakejmattson.rolebot"
-
-            //Move the help command from the internal "utility" category, to the local "Utility" category
-            container.commands.getValue("help").category = "Utility"
-
             documentationSortOrder = listOf("RoleEdit", "Info", "RoleGrant", "Utility")
         }
     }
