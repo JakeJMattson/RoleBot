@@ -13,8 +13,10 @@ private val startTime = Date()
 fun utilityCommands() = commands {
     command("Ping") {
         description = "Display network status."
-        execute {
-            it.respond("**Pinged in**: ${it.discord.jda.gatewayPing}ms")
+        execute { event ->
+            event.discord.jda.restPing.queue {
+                event.respond("Ping: ${it}ms\n")
+            }
         }
     }
 
