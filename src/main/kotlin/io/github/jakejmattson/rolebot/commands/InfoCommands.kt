@@ -8,9 +8,6 @@ import me.aberrantfox.kjdautils.extensions.jda.fullName
 import me.aberrantfox.kjdautils.extensions.jda.toMember
 import me.aberrantfox.kjdautils.internal.arguments.RoleArg
 import me.aberrantfox.kjdautils.internal.arguments.UserArg
-import net.dv8tion.jda.api.entities.*
-import java.lang.Compiler.command
-import kotlin.test.expect
 
 @CommandSet("Info")
 fun infoCommands() = commands {
@@ -18,7 +15,7 @@ fun infoCommands() = commands {
         requiresGuild = true
         description = "View the details of a given role."
         execute(RoleArg) {
-            val role = it.args.component1() as Role
+            val role = it.args.component1()
 
             it.respond(embed {
                 color = role.color

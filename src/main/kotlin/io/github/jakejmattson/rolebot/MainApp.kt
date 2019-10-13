@@ -9,7 +9,6 @@ fun main(args: Array<String>) {
     startBot(token) {
         configure {
             prefix = "*"
-            globalPath = "io.github.jakejmattson.rolebot"
             documentationSortOrder = listOf("RoleEdit", "Info", "RoleGrant", "Utility")
         }
     }

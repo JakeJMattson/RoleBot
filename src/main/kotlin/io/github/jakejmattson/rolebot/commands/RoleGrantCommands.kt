@@ -18,8 +18,8 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
         requiresGuild = true
         description = "Grant a role to the target user."
         execute(UserArg, RoleArg) {
-            val user = it.args.component1() as User
-            val role = it.args.component2() as Role
+            val user = it.args.component1()
+            val role = it.args.component2()
 
             if (!role.isGrantable())
                 return@execute it.respond("Role cannot be granted.")
@@ -36,8 +36,8 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
         requiresGuild = true
         description = "Remove a role from the target user."
         execute(UserArg, RoleArg) {
-            val user = it.args.component1() as User
-            val role = it.args.component2() as Role
+            val user = it.args.component1()
+            val role = it.args.component2()
 
             if (!role.isGrantable())
                 return@execute it.respond("Role cannot be granted (and therefore not revoked).")
@@ -54,7 +54,7 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
         requiresGuild = true
         description = "Add a role to the list of roles that can be granted."
         execute(RoleArg) {
-            val role = it.args.component1() as Role
+            val role = it.args.component1()
 
             if (role.isGrantable())
                 return@execute it.respond("Role can already be granted.")
@@ -69,7 +69,7 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
         requiresGuild = true
         description = "Remove a role from the list of roles that can be granted."
         execute(RoleArg) {
-            val role = it.args.component1() as Role
+            val role = it.args.component1()
 
             if (!role.isGrantable())
                 return@execute it.respond("Role cannot be removed - was not grantable.")

@@ -5,7 +5,6 @@ import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
 import me.aberrantfox.kjdautils.internal.arguments.*
-import net.dv8tion.jda.api.entities.Role
 import java.awt.Color
 
 @CommandSet("RoleEdit")
@@ -69,7 +68,7 @@ fun roleEditCommands() = commands {
         requiresGuild = true
         description = "Set whether or not the given role can be mentioned."
         execute(RoleArg, BooleanArg) {
-            val role = it.args.component1() as Role
+            val role = it.args.component1()
             val mentionable = it.args.component2()
             val changeString = "${if (mentionable) "" else "not"} mentionable"
 
