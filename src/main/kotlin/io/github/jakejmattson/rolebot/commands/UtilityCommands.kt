@@ -1,8 +1,8 @@
 package io.github.jakejmattson.rolebot.commands
 
 import io.github.jakejmattson.rolebot.extensions.toMinimalTimeString
-import me.aberrantfox.kjdautils.api.dsl.CommandSet
-import me.aberrantfox.kjdautils.api.dsl.commands
+import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
+import me.aberrantfox.kjdautils.api.dsl.command.commands
 import me.aberrantfox.kjdautils.api.dsl.embed
 import java.awt.Color
 import java.util.*

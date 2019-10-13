@@ -2,8 +2,8 @@ package io.github.jakejmattson.rolebot.commands
 
 import io.github.jakejmattson.rolebot.services.RoleGrantingService
 import io.github.jakejmattson.rolebot.services.isGrantable
-import me.aberrantfox.kjdautils.api.dsl.CommandSet
-import me.aberrantfox.kjdautils.api.dsl.commands
+import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
+import me.aberrantfox.kjdautils.api.dsl.command.commands
 import me.aberrantfox.kjdautils.extensions.jda.fullName
 import me.aberrantfox.kjdautils.extensions.jda.toMember
 import me.aberrantfox.kjdautils.internal.arguments.RoleArg
@@ -17,8 +17,7 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
     command("Grant") {
         requiresGuild = true
         description = "Grant a role to the target user."
-        expect(UserArg, RoleArg)
-        execute {
+        execute(UserArg, RoleArg) {
             val user = it.args.component1() as User
             val role = it.args.component2() as Role
 
@@ -36,8 +35,7 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
     command("Revoke") {
         requiresGuild = true
         description = "Remove a role from the target user."
-        expect(UserArg, RoleArg)
-        execute {
+        execute(UserArg, RoleArg) {
             val user = it.args.component1() as User
             val role = it.args.component2() as Role
 
@@ -55,8 +53,7 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
     command("AddGrantable") {
         requiresGuild = true
         description = "Add a role to the list of roles that can be granted."
-        expect(RoleArg)
-        execute {
+        execute(RoleArg) {
             val role = it.args.component1() as Role
 
             if (role.isGrantable())
@@ -71,8 +68,7 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
     command("RemoveGrantable") {
         requiresGuild = true
         description = "Remove a role from the list of roles that can be granted."
-        expect(RoleArg)
-        execute {
+        execute(RoleArg) {
             val role = it.args.component1() as Role
 
             if (!role.isGrantable())
