@@ -8,18 +8,14 @@ import me.aberrantfox.kjdautils.extensions.jda.fullName
 import me.aberrantfox.kjdautils.extensions.jda.toMember
 import me.aberrantfox.kjdautils.internal.arguments.RoleArg
 import me.aberrantfox.kjdautils.internal.arguments.UserArg
-import net.dv8tion.jda.api.entities.Role
-import net.dv8tion.jda.api.entities.User
 
 @CommandSet("RoleGrant")
 fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
 
     command("Grant") {
-        requiresGuild = true
         description = "Grant a role to the target user."
         execute(UserArg, RoleArg) {
-            val user = it.args.component1()
-            val role = it.args.component2()
+            val (user, role) = it.args
 
             if (!role.isGrantable())
                 return@execute it.respond("Role cannot be granted.")
@@ -33,11 +29,9 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
     }
 
     command("Revoke") {
-        requiresGuild = true
         description = "Remove a role from the target user."
         execute(UserArg, RoleArg) {
-            val user = it.args.component1()
-            val role = it.args.component2()
+            val (user, role) = it.args
 
             if (!role.isGrantable())
                 return@execute it.respond("Role cannot be granted (and therefore not revoked).")
@@ -51,10 +45,9 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
     }
 
     command("AddGrantable") {
-        requiresGuild = true
         description = "Add a role to the list of roles that can be granted."
         execute(RoleArg) {
-            val role = it.args.component1()
+            val role = it.args.first
 
             if (role.isGrantable())
                 return@execute it.respond("Role can already be granted.")
@@ -66,10 +59,9 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
     }
 
     command("RemoveGrantable") {
-        requiresGuild = true
         description = "Remove a role from the list of roles that can be granted."
         execute(RoleArg) {
-            val role = it.args.component1()
+            val role = it.args.first
 
             if (!role.isGrantable())
                 return@execute it.respond("Role cannot be removed - was not grantable.")
@@ -81,7 +73,6 @@ fun roleGrantCommands(roleGrantingService: RoleGrantingService) = commands {
     }
 
     command("ListGrantableRoles") {
-        requiresGuild = true
         description = "List all roles that can be granted."
         execute {
             it.respond("**GrantableRoles**\n${roleGrantingService.listRoles()}")

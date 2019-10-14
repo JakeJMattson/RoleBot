@@ -21,7 +21,6 @@ fun utilityCommands() = commands {
     }
 
     command("Uptime") {
-        requiresGuild = true
         description = "Displays how long the bot has been running."
         execute {
             val seconds = (Date().time - startTime.time) / 1000

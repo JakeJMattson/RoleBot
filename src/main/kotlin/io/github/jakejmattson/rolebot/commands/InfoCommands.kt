@@ -12,10 +12,9 @@ import me.aberrantfox.kjdautils.internal.arguments.UserArg
 @CommandSet("Info")
 fun infoCommands() = commands {
     command("ViewRole") {
-        requiresGuild = true
         description = "View the details of a given role."
         execute(RoleArg) {
-            val role = it.args.component1()
+            val role = it.args.first
 
             it.respond(embed {
                 color = role.color
@@ -27,10 +26,9 @@ fun infoCommands() = commands {
     }
 
     command("GetMembersWithRole") {
-        requiresGuild = true
         description = "View all the members with this role."
         execute(RoleArg) {
-            val role = it.args.component1()
+            val role = it.args.first
             val members = it.guild!!.members.filter { it.roles.contains(role) }.joinToString("\n") { it.fullName() }
 
             it.respond("**Members With Role**\n$members")
@@ -38,10 +36,9 @@ fun infoCommands() = commands {
     }
 
     command("ViewMemberRoles") {
-        requiresGuild = true
         description = "View all the roles of a member."
         execute(UserArg) {
-            val user = it.args.component1()
+            val user = it.args.first
             val roles = user.toMember(it.guild!!)?.roles ?: listOf()
             val roleString = roles.joinToString("\n") { it.name }.takeIf { it.isNotEmpty() } ?: "<No roles>"
 
@@ -50,7 +47,7 @@ fun infoCommands() = commands {
     }
 
     command("ViewGuildRoles") {
-        requiresGuild = true
+
         description = "View all server roles."
         execute {
             val roleString = it.guild!!.roles.joinToString("\n") { it.name }

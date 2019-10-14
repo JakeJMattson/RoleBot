@@ -10,10 +10,9 @@ import java.awt.Color
 @CommandSet("RoleEdit")
 fun roleEditCommands() = commands {
     command("CreateRole") {
-        requiresGuild = true
         description = "Create a role with the given name."
         execute(SentenceArg) {
-            val name = it.args.component1()
+            val name = it.args.first
 
             it.guild!!.createRole().queue {
                 it.manager.setName(name).queue()
@@ -24,11 +23,9 @@ fun roleEditCommands() = commands {
     }
 
     command("SetName") {
-        requiresGuild = true
         description = "Set the name of the given role."
         execute(RoleArg, WordArg) {
-            val role = it.args.component1()
-            val newName = it.args.component2()
+            val (role, newName) = it.args
             val oldName = role.name
 
             if (oldName == newName) return@execute it.respond("Value already $newName.")
@@ -43,11 +40,10 @@ fun roleEditCommands() = commands {
     }
 
     command("SetColor") {
-        requiresGuild = true
         description = "Set the color of the given role."
         execute(RoleArg, HexColorArg) {
-            val role = it.args.component1()
-            val newColor = Color(it.args.component2())
+            val role = it.args.first
+            val newColor = Color(it.args.second)
             val newColorString = newColor.toHexString()
             val oldColor = role.color?.toHexString()
 
@@ -65,11 +61,9 @@ fun roleEditCommands() = commands {
     }
 
     command("SetMentionable") {
-        requiresGuild = true
         description = "Set whether or not the given role can be mentioned."
         execute(RoleArg, BooleanArg) {
-            val role = it.args.component1()
-            val mentionable = it.args.component2()
+            val (role, mentionable) = it.args
             val changeString = "${if (mentionable) "" else "not"} mentionable"
 
             if (mentionable == role.isMentionable) return@execute it.respond("Value already $mentionable.")
@@ -84,10 +78,9 @@ fun roleEditCommands() = commands {
     }
 
     command("DeleteRole") {
-        requiresGuild = true
         description = "Delete the given role."
         execute(RoleArg) {
-            val role = it.args.component1()
+            val role = it.args.first
             role.delete().queue()
             it.respond("**Role Deleted**")
         }
