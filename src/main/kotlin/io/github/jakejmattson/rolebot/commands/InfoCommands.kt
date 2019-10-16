@@ -3,7 +3,6 @@ package io.github.jakejmattson.rolebot.commands
 import io.github.jakejmattson.rolebot.extensions.toHexString
 import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
-import me.aberrantfox.kjdautils.api.dsl.embed
 import me.aberrantfox.kjdautils.extensions.jda.fullName
 import me.aberrantfox.kjdautils.extensions.jda.toMember
 import me.aberrantfox.kjdautils.internal.arguments.RoleArg
@@ -16,12 +15,12 @@ fun infoCommands() = commands {
         execute(RoleArg) {
             val role = it.args.first
 
-            it.respond(embed {
+            it.respond {
                 color = role.color
                 addField("Name", role.name, false)
                 addField("Color", role.color?.toHexString(), false)
                 addField("Mentionable", if (role.isMentionable) "Yes" else "No", false)
-            })
+            }
         }
     }
 

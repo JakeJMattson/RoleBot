@@ -2,7 +2,6 @@ package io.github.jakejmattson.rolebot.commands
 
 import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
-import me.aberrantfox.kjdautils.api.dsl.embed
 import me.aberrantfox.kjdautils.extensions.stdlib.toMinimalTimeString
 import java.awt.Color
 import java.util.*
@@ -25,7 +24,7 @@ fun utilityCommands() = commands {
         execute {
             val seconds = (Date().time - startTime.time) / 1000
 
-            it.respond(embed {
+            it.respond {
                 color = Color.WHITE
                 title = "I have been running since"
                 description = startTime.toString()
@@ -34,7 +33,7 @@ fun utilityCommands() = commands {
                     name = "That's been"
                     value = seconds.toMinimalTimeString()
                 }
-            })
+            }
         }
     }
 }

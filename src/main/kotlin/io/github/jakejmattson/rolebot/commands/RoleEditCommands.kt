@@ -3,7 +3,6 @@ package io.github.jakejmattson.rolebot.commands
 import io.github.jakejmattson.rolebot.extensions.toHexString
 import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
-import me.aberrantfox.kjdautils.api.dsl.embed
 import me.aberrantfox.kjdautils.internal.arguments.*
 import java.awt.Color
 
@@ -32,10 +31,10 @@ fun roleEditCommands() = commands {
 
             role.manager.setName(newName).queue()
 
-            it.respond(embed {
+            it.respond {
                 color = role.color
                 addField("Role Name Updated", "Role name changed from $oldName to $newName.", false)
-            })
+            }
         }
     }
 
@@ -53,10 +52,10 @@ fun roleEditCommands() = commands {
 
             role.manager.setColor(newColor).queue()
 
-            it.respond(embed {
+            it.respond {
                 color = role.color
                 addField("Role Color Updated", "Role color changed $changeString.", false)
-            })
+            }
         }
     }
 
@@ -70,10 +69,10 @@ fun roleEditCommands() = commands {
 
             role.manager.setMentionable(mentionable).queue()
 
-            it.respond(embed {
+            it.respond {
                 color = role.color
                 addField("Role Mentionability Updated", "Role is now $changeString.", false)
-            })
+            }
         }
     }
 
