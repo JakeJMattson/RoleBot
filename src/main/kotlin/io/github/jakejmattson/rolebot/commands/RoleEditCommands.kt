@@ -4,7 +4,6 @@ import io.github.jakejmattson.rolebot.extensions.toHexString
 import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
 import me.aberrantfox.kjdautils.internal.arguments.*
-import java.awt.Color
 
 @CommandSet("RoleEdit")
 fun roleEditCommands() = commands {
@@ -41,8 +40,7 @@ fun roleEditCommands() = commands {
     command("SetColor") {
         description = "Set the color of the given role."
         execute(RoleArg, HexColorArg) {
-            val role = it.args.first
-            val newColor = Color(it.args.second)
+            val (role, newColor) = it.args
             val newColorString = newColor.toHexString()
             val oldColor = role.color?.toHexString()
 
