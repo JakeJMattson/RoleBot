@@ -5,6 +5,14 @@
 | ---------- | -------------------------- |
 | (Argument) | This argument is optional. |
 
+## Info
+| Commands           | Arguments | Description                          |
+| ------------------ | --------- | ------------------------------------ |
+| GetMembersWithRole | Role      | View all the members with this role. |
+| ViewGuildRoles     | <none>    | View all server roles.               |
+| ViewMemberRoles    | User      | View all the roles of a member.      |
+| ViewRole           | Role      | View the details of a given role.    |
+
 ## RoleEdit
 | Commands       | Arguments       | Description                                         |
 | -------------- | --------------- | --------------------------------------------------- |
@@ -13,14 +21,6 @@
 | SetColor       | Role, Hex Color | Set the color of the given role.                    |
 | SetMentionable | Role, Boolean   | Set whether or not the given role can be mentioned. |
 | SetName        | Role, Word      | Set the name of the given role.                     |
-
-## Info
-| Commands           | Arguments | Description                          |
-| ------------------ | --------- | ------------------------------------ |
-| GetMembersWithRole | Role      | View all the members with this role. |
-| ViewGuildRoles     | <none>    | View all server roles.               |
-| ViewMemberRoles    | User      | View all the roles of a member.      |
-| ViewRole           | Role      | View the details of a given role.    |
 
 ## RoleGrant
 | Commands           | Arguments  | Description                                               |
@@ -34,7 +34,7 @@
 ## Utility
 | Commands | Arguments | Description                                 |
 | -------- | --------- | ------------------------------------------- |
+| Help     | (Command) | Display a help menu.                        |
 | Ping     | <none>    | Display network status.                     |
 | Uptime   | <none>    | Displays how long the bot has been running. |
-| help     | (Word)    | Display a help menu                         |
 
