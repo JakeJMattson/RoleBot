@@ -32,9 +32,8 @@
 | Revoke             | User, Role | Remove a role from the target user.                       |
 
 ## Utility
-| Commands | Arguments | Description                                 |
-| -------- | --------- | ------------------------------------------- |
-| Help     | (Command) | Display a help menu.                        |
-| Ping     | <none>    | Display network status.                     |
-| Uptime   | <none>    | Displays how long the bot has been running. |
+| Commands             | Arguments | Description                              |
+| -------------------- | --------- | ---------------------------------------- |
+| Help                 | (Command) | Display a help menu.                     |
+| Status, Ping, Uptime | <none>    | Display network status and total uptime. |
 

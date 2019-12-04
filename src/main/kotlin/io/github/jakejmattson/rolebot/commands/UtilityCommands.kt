@@ -10,28 +10,20 @@ private val startTime = Date()
 
 @CommandSet("Utility")
 fun utilityCommands() = commands {
-    command("Ping") {
-        description = "Display network status."
+    command("Status", "Ping", "Uptime") {
+        description = "Display network status and total uptime."
         execute { event ->
-            event.discord.jda.restPing.queue {
-                event.respond("Ping: ${it}ms\n")
-            }
-        }
-    }
+            val jda = event.discord.jda
 
-    command("Uptime") {
-        description = "Displays how long the bot has been running."
-        execute {
-            val seconds = (Date().time - startTime.time) / 1000
+            jda.restPing.queue { restPing ->
+                event.respond {
+                    color = Color(0x00bfff)
 
-            it.respond {
-                color = Color.WHITE
-                title = "I have been running since"
-                description = startTime.toString()
+                    val seconds = (Date().time - startTime.time) / 1000
 
-                field {
-                    name = "That's been"
-                    value = seconds.toMinimalTimeString()
+                    addField("Rest ping", "${restPing}ms")
+                    addField("Gateway ping", "${jda.gatewayPing}ms")
+                    addField("Total Uptime", seconds.toMinimalTimeString())
                 }
             }
         }
