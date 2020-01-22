@@ -1,4 +1,4 @@
-package io.github.jakejmattson.rolebot
+package me.jakejmattson.rolebot
 
 import me.aberrantfox.kjdautils.api.startBot
 

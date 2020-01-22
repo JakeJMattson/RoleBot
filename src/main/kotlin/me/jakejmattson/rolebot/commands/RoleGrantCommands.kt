@@ -1,7 +1,7 @@
-package io.github.jakejmattson.rolebot.commands
+package me.jakejmattson.rolebot.commands
 
-import io.github.jakejmattson.rolebot.services.RoleGrantingService
-import io.github.jakejmattson.rolebot.services.isGrantable
+import me.jakejmattson.rolebot.services.RoleGrantingService
+import me.jakejmattson.rolebot.services.isGrantable
 import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
 import me.aberrantfox.kjdautils.extensions.jda.fullName

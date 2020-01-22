@@ -1,4 +1,4 @@
-package io.github.jakejmattson.rolebot.extensions
+package me.jakejmattson.rolebot.extensions
 
 import java.awt.Color
 

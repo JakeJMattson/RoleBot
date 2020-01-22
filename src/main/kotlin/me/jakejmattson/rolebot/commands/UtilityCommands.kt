@@ -1,4 +1,4 @@
-package io.github.jakejmattson.rolebot.commands
+package me.jakejmattson.rolebot.commands
 
 import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands

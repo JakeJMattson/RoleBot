@@ -1,6 +1,6 @@
-package io.github.jakejmattson.rolebot.commands
+package me.jakejmattson.rolebot.commands
 
-import io.github.jakejmattson.rolebot.extensions.toHexString
+import me.jakejmattson.rolebot.extensions.toHexString
 import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
 import me.aberrantfox.kjdautils.extensions.jda.fullName
