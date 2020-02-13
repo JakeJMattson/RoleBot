@@ -1,12 +1,12 @@
 package me.jakejmattson.rolebot.commands
 
-import me.jakejmattson.rolebot.extensions.toHexString
-import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
+import me.aberrantfox.kjdautils.api.annotation.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
 import me.aberrantfox.kjdautils.extensions.jda.fullName
 import me.aberrantfox.kjdautils.extensions.jda.toMember
 import me.aberrantfox.kjdautils.internal.arguments.RoleArg
 import me.aberrantfox.kjdautils.internal.arguments.UserArg
+import me.jakejmattson.rolebot.extensions.toHexString
 
 @CommandSet("Info")
 fun infoCommands() = commands {

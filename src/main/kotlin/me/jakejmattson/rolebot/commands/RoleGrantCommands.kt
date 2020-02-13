@@ -1,8 +1,8 @@
 package me.jakejmattson.rolebot.commands
 
+import me.aberrantfox.kjdautils.api.annotation.CommandSet
 import me.jakejmattson.rolebot.services.RoleGrantingService
 import me.jakejmattson.rolebot.services.isGrantable
-import me.aberrantfox.kjdautils.api.dsl.command.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
 import me.aberrantfox.kjdautils.extensions.jda.fullName
 import me.aberrantfox.kjdautils.extensions.jda.toMember
