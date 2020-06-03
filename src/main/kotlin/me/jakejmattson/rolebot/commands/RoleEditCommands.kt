@@ -9,7 +9,7 @@ import me.aberrantfox.kjdautils.internal.arguments.*
 fun roleEditCommands() = commands {
     command("CreateRole") {
         description = "Create a role with the given name."
-        execute(SentenceArg) {
+        execute(EveryArg) {
             val name = it.args.first
 
             it.guild!!.createRole().queue {
@@ -22,7 +22,7 @@ fun roleEditCommands() = commands {
 
     command("SetName") {
         description = "Set the name of the given role."
-        execute(RoleArg, WordArg) {
+        execute(RoleArg, AnyArg) {
             val (role, newName) = it.args
             val oldName = role.name
 

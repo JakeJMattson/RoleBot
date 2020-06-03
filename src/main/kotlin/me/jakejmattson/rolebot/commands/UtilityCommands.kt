@@ -2,7 +2,7 @@ package me.jakejmattson.rolebot.commands
 
 import me.aberrantfox.kjdautils.api.annotation.CommandSet
 import me.aberrantfox.kjdautils.api.dsl.command.commands
-import me.aberrantfox.kjdautils.extensions.stdlib.toMinimalTimeString
+import me.aberrantfox.kjdautils.extensions.stdlib.toTimeString
 import java.awt.Color
 import java.util.*
 
@@ -23,7 +23,7 @@ fun utilityCommands() = commands {
 
                     addField("Rest ping", "${restPing}ms")
                     addField("Gateway ping", "${jda.gatewayPing}ms")
-                    addField("Total Uptime", seconds.toMinimalTimeString())
+                    addField("Total Uptime", seconds.toTimeString())
                 }
             }
         }

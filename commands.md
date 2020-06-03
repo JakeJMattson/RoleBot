@@ -20,7 +20,7 @@
 | DeleteRole     | Role            | Delete the given role.                              |
 | SetColor       | Role, Hex Color | Set the color of the given role.                    |
 | SetMentionable | Role, Boolean   | Set whether or not the given role can be mentioned. |
-| SetName        | Role, Word      | Set the name of the given role.                     |
+| SetName        | Role, Any       | Set the name of the given role.                     |
 
 ## RoleGrant
 | Commands           | Arguments  | Description                                               |
