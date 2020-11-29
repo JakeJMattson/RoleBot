@@ -1,4 +1,5 @@
-RoleBot.iml
-.idea/
-target/
-config/
+*.iml
+.idea
+.gradle
+build
+config
