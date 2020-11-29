@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.gitlab.aberrantfox:KUtils:0.16.0")
+    implementation("me.jakejmattson:DiscordKt:0.19.1")
 }
 
 tasks.compileKotlin {

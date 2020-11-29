@@ -1,6 +1,6 @@
 package me.jakejmattson.rolebot.services
 
-import me.aberrantfox.kjdautils.api.annotation.Service
+import me.jakejmattson.discordkt.api.annotations.Service
 import net.dv8tion.jda.api.entities.Role
 
 private val grantableRoles = ArrayList<Role>()

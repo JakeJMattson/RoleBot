@@ -1,12 +1,12 @@
 package me.jakejmattson.rolebot
 
-import me.aberrantfox.kjdautils.api.startBot
+import me.jakejmattson.discordkt.api.dsl.bot
 
 fun main(args: Array<String>) {
     val token = args.firstOrNull()
         ?: throw IllegalArgumentException("No program arguments provided. Expected bot token.")
 
-    startBot(token) {
+    bot(token) {
         configure {
             prefix { "*" }
         }

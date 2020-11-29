@@ -1,9 +1,9 @@
 package me.jakejmattson.rolebot.commands
 
-import me.aberrantfox.kjdautils.api.annotation.CommandSet
+import me.jakejmattson.discordkt.api.annotations.CommandSet
+import me.jakejmattson.discordkt.api.arguments.*
+import me.jakejmattson.discordkt.api.dsl.command.commands
 import me.jakejmattson.rolebot.extensions.toHexString
-import me.aberrantfox.kjdautils.api.dsl.command.commands
-import me.aberrantfox.kjdautils.internal.arguments.*
 
 @CommandSet("RoleEdit")
 fun roleEditCommands() = commands {

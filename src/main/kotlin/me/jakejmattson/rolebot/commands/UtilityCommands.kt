@@ -1,8 +1,8 @@
 package me.jakejmattson.rolebot.commands
 
-import me.aberrantfox.kjdautils.api.annotation.CommandSet
-import me.aberrantfox.kjdautils.api.dsl.command.commands
-import me.aberrantfox.kjdautils.extensions.stdlib.toTimeString
+import me.jakejmattson.discordkt.api.annotations.CommandSet
+import me.jakejmattson.discordkt.api.dsl.command.commands
+import me.jakejmattson.discordkt.api.extensions.stdlib.toTimeString
 import java.awt.Color
 import java.util.*
 

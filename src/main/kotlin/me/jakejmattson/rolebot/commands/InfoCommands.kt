@@ -1,11 +1,11 @@
 package me.jakejmattson.rolebot.commands
 
-import me.aberrantfox.kjdautils.api.annotation.CommandSet
-import me.aberrantfox.kjdautils.api.dsl.command.commands
-import me.aberrantfox.kjdautils.extensions.jda.fullName
-import me.aberrantfox.kjdautils.extensions.jda.toMember
-import me.aberrantfox.kjdautils.internal.arguments.RoleArg
-import me.aberrantfox.kjdautils.internal.arguments.UserArg
+import me.jakejmattson.discordkt.api.annotations.CommandSet
+import me.jakejmattson.discordkt.api.arguments.RoleArg
+import me.jakejmattson.discordkt.api.arguments.UserArg
+import me.jakejmattson.discordkt.api.dsl.command.commands
+import me.jakejmattson.discordkt.api.extensions.jda.fullName
+import me.jakejmattson.discordkt.api.extensions.jda.toMember
 import me.jakejmattson.rolebot.extensions.toHexString
 
 @CommandSet("Info")
