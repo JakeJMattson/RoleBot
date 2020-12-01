@@ -8,11 +8,10 @@ plugins {
 repositories {
     mavenCentral()
     jcenter()
-    maven("https://jitpack.io")
 }
 
 dependencies {
-    implementation("me.jakejmattson:DiscordKt:0.19.1")
+    implementation("me.jakejmattson:DiscordKt:0.21.3")
 }
 
 tasks.compileKotlin {

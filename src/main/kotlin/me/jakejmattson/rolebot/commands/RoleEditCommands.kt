@@ -1,85 +1,101 @@
 package me.jakejmattson.rolebot.commands
 
-import me.jakejmattson.discordkt.api.annotations.CommandSet
+import com.gitlab.kordlib.core.behavior.addRole
+import com.gitlab.kordlib.core.behavior.edit
 import me.jakejmattson.discordkt.api.arguments.*
-import me.jakejmattson.discordkt.api.dsl.command.commands
+import me.jakejmattson.discordkt.api.dsl.commands
+import me.jakejmattson.discordkt.api.extensions.addField
 import me.jakejmattson.rolebot.extensions.toHexString
 
-@CommandSet("RoleEdit")
-fun roleEditCommands() = commands {
-    command("CreateRole") {
+fun roleEditCommands() = commands("RoleEdit") {
+    guildCommand("CreateRole") {
         description = "Create a role with the given name."
         execute(EveryArg) {
-            val name = it.args.first
+            val name = args.first
 
-            it.guild!!.createRole().queue {
-                it.manager.setName(name).queue()
+            guild.addRole {
+                this.name = name
             }
 
-            it.respond("**Role Created**")
+            respond("**Role Created**")
         }
     }
 
-    command("SetName") {
+    guildCommand("SetName") {
         description = "Set the name of the given role."
         execute(RoleArg, AnyArg) {
-            val (role, newName) = it.args
+            val (role, newName) = args
             val oldName = role.name
 
-            if (oldName == newName) return@execute it.respond("Value already $newName.")
+            if (oldName == newName) {
+                respond("Value already $newName.")
+                return@execute
+            }
 
-            role.manager.setName(newName).queue()
+            role.edit {
+                this.name = newName
+            }
 
-            it.respond {
+            respond {
                 color = role.color
-                addField("Role Name Updated", "Role name changed from $oldName to $newName.", false)
+                addField("Role Name Updated", "Role name changed from $oldName to $newName.")
             }
         }
     }
 
-    command("SetColor") {
+    guildCommand("SetColor") {
         description = "Set the color of the given role."
         execute(RoleArg, HexColorArg) {
-            val (role, newColor) = it.args
+            val (role, newColor) = args
             val newColorString = newColor.toHexString()
-            val oldColor = role.color?.toHexString()
+            val oldColor = role.color.toHexString()
 
-            if (oldColor == newColorString) return@execute it.respond("Value already $newColorString.")
+            if (oldColor == newColorString) {
+                respond("Value already $newColorString.")
+                return@execute
+            }
 
             val changeString = "from $oldColor to $newColorString"
 
-            role.manager.setColor(newColor).queue()
+            role.edit {
+                this.color = newColor
+            }
 
-            it.respond {
+            respond {
                 color = role.color
-                addField("Role Color Updated", "Role color changed $changeString.", false)
+                addField("Role Color Updated", "Role color changed $changeString.")
             }
         }
     }
 
-    command("SetMentionable") {
+    guildCommand("SetMentionable") {
         description = "Set whether or not the given role can be mentioned."
         execute(RoleArg, BooleanArg) {
-            val (role, mentionable) = it.args
+            val (role, mentionable) = args
             val changeString = "${if (mentionable) "" else "not"} mentionable"
 
-            if (mentionable == role.isMentionable) return@execute it.respond("Value already $mentionable.")
+            if (mentionable == role.mentionable) {
+                respond("Value already $mentionable.")
+                return@execute
+            }
 
-            role.manager.setMentionable(mentionable).queue()
+            role.edit {
+                this.mentionable = mentionable
+            }
 
-            it.respond {
+            respond {
                 color = role.color
-                addField("Role Mentionability Updated", "Role is now $changeString.", false)
+                addField("Role Mentionability Updated", "Role is now $changeString.")
             }
         }
     }
 
-    command("DeleteRole") {
+    guildCommand("DeleteRole") {
         description = "Delete the given role."
         execute(RoleArg) {
-            val role = it.args.first
-            role.delete().queue()
-            it.respond("**Role Deleted**")
+            val role = args.first
+            role.delete()
+            respond("**Role Deleted**")
         }
     }
 }

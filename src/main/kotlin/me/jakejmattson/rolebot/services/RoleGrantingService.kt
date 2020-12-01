@@ -1,9 +1,9 @@
 package me.jakejmattson.rolebot.services
 
+import com.gitlab.kordlib.core.entity.Role
 import me.jakejmattson.discordkt.api.annotations.Service
-import net.dv8tion.jda.api.entities.Role
 
-private val grantableRoles = ArrayList<Role>()
+private val grantableRoles = mutableListOf<Role>()
 fun Role.isGrantable() = grantableRoles.contains(this)
 
 @Service

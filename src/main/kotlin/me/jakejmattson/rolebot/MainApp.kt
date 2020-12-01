@@ -1,14 +1,19 @@
 package me.jakejmattson.rolebot
 
+import com.gitlab.kordlib.gateway.Intents
 import me.jakejmattson.discordkt.api.dsl.bot
 
-fun main(args: Array<String>) {
+suspend fun main(args: Array<String>) {
     val token = args.firstOrNull()
         ?: throw IllegalArgumentException("No program arguments provided. Expected bot token.")
 
     bot(token) {
-        configure {
-            prefix { "*" }
+        prefix { "*" }
+
+        intents {
+            Intents.nonPrivileged.intents.forEach {
+                +it
+            }
         }
     }
 }

@@ -1,56 +1,53 @@
 package me.jakejmattson.rolebot.commands
 
-import me.jakejmattson.discordkt.api.annotations.CommandSet
+import kotlinx.coroutines.flow.toList
+import me.jakejmattson.discordkt.api.arguments.MemberArg
 import me.jakejmattson.discordkt.api.arguments.RoleArg
-import me.jakejmattson.discordkt.api.arguments.UserArg
-import me.jakejmattson.discordkt.api.dsl.command.commands
-import me.jakejmattson.discordkt.api.extensions.jda.fullName
-import me.jakejmattson.discordkt.api.extensions.jda.toMember
+import me.jakejmattson.discordkt.api.dsl.commands
+import me.jakejmattson.discordkt.api.extensions.addField
 import me.jakejmattson.rolebot.extensions.toHexString
 
-@CommandSet("Info")
-fun infoCommands() = commands {
-    command("ViewRole") {
+fun infoCommands() = commands("Info") {
+    guildCommand("ViewRole") {
         description = "View the details of a given role."
         execute(RoleArg) {
-            val role = it.args.first
+            val role = args.first
 
-            it.respond {
+            respond {
                 color = role.color
-                addField("Name", role.name, false)
-                addField("Color", role.color?.toHexString(), false)
-                addField("Mentionable", if (role.isMentionable) "Yes" else "No", false)
+                addField("Name", role.name)
+                addField("Color", role.color.toHexString())
+                addField("Mentionable", if (role.mentionable) "Yes" else "No")
             }
         }
     }
 
-    command("GetMembersWithRole") {
+    guildCommand("GetMembersWithRole") {
         description = "View all the members with this role."
         execute(RoleArg) {
-            val role = it.args.first
-            val members = it.guild!!.members.filter { it.roles.contains(role) }.joinToString("\n") { it.fullName() }
+            val role = args.first
+            val members = guild.members.toList().filter { role in it.roles.toList() }.joinToString("\n") { it.tag }
 
-            it.respond("**Members With Role**\n$members")
+            respond("**Members With Role**\n$members")
         }
     }
 
-    command("ViewMemberRoles") {
+    guildCommand("ViewMemberRoles") {
         description = "View all the roles of a member."
-        execute(UserArg) {
-            val user = it.args.first
-            val roles = user.toMember(it.guild!!)?.roles ?: listOf()
+        execute(MemberArg) {
+            val member = args.first
+            val roles = member.roles.toList()
             val roleString = roles.joinToString("\n") { it.name }.takeIf { it.isNotEmpty() } ?: "<No roles>"
 
-            it.respond("**Member Roles**\n$roleString")
+            respond("**Member Roles**\n$roleString")
         }
     }
 
-    command("ViewGuildRoles") {
-
+    guildCommand("ViewGuildRoles") {
         description = "View all server roles."
         execute {
-            val roleString = it.guild!!.roles.joinToString("\n") { it.name }
-            it.respond("**Server Roles**\n$roleString")
+            val roleString = guild.roles.toList().joinToString("\n") { it.name }
+            respond("**Server Roles**\n$roleString")
         }
     }
 }
